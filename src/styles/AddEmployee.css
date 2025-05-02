@@ -1,0 +1,112 @@
+
+.add-employee-container {
+  width: 100%;  /* Ensure the container takes up 100% width */
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #FFDBDB; /* Consistent background color */
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: black; /* Make text black */
+}
+
+/* Form styles */
+.add-employee-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.left-panel, .right-panel {
+  width: 48%; /* Panels side by side */
+  box-sizing: border-box;
+}
+
+h2, h3 {
+  color: black;  /* Ensure headings are black */
+  text-align: center;
+}
+
+h3 {
+  margin-top: 10px;
+}
+
+/* Input and Textarea styles */
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #f568d1be;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: white;
+  color: black;  /* Ensure text inside input is black */
+}
+
+textarea {
+  height: 120px; /* Adjusted for better fit */
+}
+
+/* Button styles */
+button {
+  padding: 12px 20px;
+  background-color: #a63d75; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #74254f;
+}
+
+/* Photo Upload Section */
+.photo-upload {
+  text-align: center;
+}
+
+.avatar-placeholder {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.upload-btn {
+  background-color: #a63d75; /* Green color remains */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  background-color: #74254f;
+}
+
+/* Checkbox and Label styles */
+label {
+  display: block;
+  margin-top: 10px;
+  color: black;  /* Ensure labels are black */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .left-panel, .right-panel {
+    width: 100%; /* Full width for smaller screens */
+  }
+
+  .add-employee-form {
+    padding: 10px; /* Less padding on smaller screens */
+  }
+
+  button {
+    width: 100%; /* Full-width button */
+  }
+
+  .photo-upload {
+    margin-bottom: 20px;
+  }
+}
