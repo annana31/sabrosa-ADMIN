@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './AdminProfile.css';
+import '../styles/AdminProfile.css';
 import { Pencil } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
