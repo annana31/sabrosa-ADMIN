@@ -1,112 +1,104 @@
-
-.add-employee-container {
-  width: 100%;  /* Ensure the container takes up 100% width */
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #FFDBDB; /* Consistent background color */
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: black; /* Make text black */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  color: black;
 }
 
-/* Form styles */
+.add-employee-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
 .add-employee-form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
-  width: 100%;
+  gap: 30px;
+  color: black;
 }
 
-.left-panel, .right-panel {
-  width: 48%; /* Panels side by side */
-  box-sizing: border-box;
-}
-
-h2, h3 {
-  color: black;  /* Ensure headings are black */
-  text-align: center;
-}
-
-h3 {
-  margin-top: 10px;
-}
-
-/* Input and Textarea styles */
-input, select, textarea {
-  width: 100%;
+.left-panel,
+.right-panel {
+  flex: 1 1 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #f568d1be;
+  background-color: #fafafa;
+  border-radius: 10px;
+}
+
+input,
+select,
+textarea {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  box-sizing: border-box;
   background-color: white;
-  color: black;  /* Ensure text inside input is black */
+  color: black;
 }
 
 textarea {
-  height: 120px; /* Adjusted for better fit */
+  resize: vertical;
+  min-height: 60px;
 }
 
-/* Button styles */
-button {
-  padding: 12px 20px;
-  background-color: #a63d75; 
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #74254f;
-}
-
-/* Photo Upload Section */
 .photo-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.avatar-placeholder,
+.avatar-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+h2 {
+  margin-bottom: 20px;
   text-align: center;
+  color: #333;
 }
 
-.avatar-placeholder {
-  font-size: 40px;
-  margin-bottom: 10px;
+h3 {
+  margin: 0 0 10px 0;
+  color: #444;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
 }
 
-.upload-btn {
-  background-color: #a63d75; /* Green color remains */
+.save-btn {
+  background-color: #a63d75;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  align-self: flex-start;
+  margin-top: 20px;
 }
 
-.upload-btn:hover {
-  background-color: #74254f;
+.save-btn:hover {
+  background-color: #922d63;
 }
 
-/* Checkbox and Label styles */
-label {
-  display: block;
-  margin-top: 10px;
-  color: black;  /* Ensure labels are black */
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-  .left-panel, .right-panel {
-    width: 100%; /* Full width for smaller screens */
-  }
-
-  .add-employee-form {
-    padding: 10px; /* Less padding on smaller screens */
-  }
-
-  button {
-    width: 100%; /* Full-width button */
-  }
-
-  .photo-upload {
-    margin-bottom: 20px;
-  }
+input[type="file"] {
+  border: none;
+  background: none;
 }
