@@ -1,0 +1,335 @@
+/* Layout wrapper */
+.admin-layout {
+  display: flex;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100vh;
+  background-color: #FFDBDB;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.sidebar h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 1rem 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 0.5rem 1rem;
+  display: block;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background-color: #966d83;
+}
+
+/* Main content area */
+.main-content {
+  margin-left: 220px; /* match sidebar width */
+  width: calc(100% - 220px);
+  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Left column (profile + details) */
+.left-column {
+  flex: 1 1 60%;
+  max-width: 60%;
+}
+
+/* Right column (bio + messages) */
+.right-column {
+  flex: 1 1 35%;
+  max-width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Profile wrapper */
+.profile-wrapper {
+  background-color: #F8F8E1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #C95792;
+  margin-right: 1rem;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.profile-info p {
+  margin: 0.25rem 0 0;
+  color: #666;
+}
+
+/* White box for personal details */
+.profile-container {
+  background: #ffffff;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Dark inner container */
+.profile-details {
+  border: 1px solid #a63d75;
+  border-radius: 12px;
+  padding: 1.5rem;
+  background-color: #FFDBDB;
+}
+
+.profile-details h3 {
+  margin-bottom: 1rem;
+  color: #000000;
+  text-align: center;
+}
+
+/* Each personal detail row */
+.detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #444;
+}
+
+.detail:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #000000;
+}
+
+.detail-value {
+  color: #000000;
+}
+
+/* Edit Details Button */
+.edit-details-btn {
+  margin-top: 1.5rem;
+  background-color: #C95792;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.edit-details-btn:hover {
+  background-color: #a63d75;
+}
+
+/* Right column boxes */
+.bio-box,
+.contact-box {
+  background: #ffffff;
+  padding: 1.5rem 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  margin-top: 8.5rem; /* Added margin-top to move boxes down */
+}
+
+/* Bio box and contact box headers */
+.bio-box h3,
+.contact-box h3 {
+  margin-bottom: 0.6rem;
+  color: #a63d75;
+  text-align: justify;
+}
+
+/* Bio box and contact box paragraphs */
+.bio-box p,
+.contact-box p {
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* evenly spaced icons */
+}
+
+.social-icons a {
+  background-color: #C95792;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* Specific platform colors (Font Awesome class-based) */
+.social-icons a.facebook {
+  background-color: #3b5998;
+}
+
+.social-icons a.twitter {
+  background-color: #1da1f2;
+}
+
+.social-icons a.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+.social-icons a.linkedin {
+  background-color: #0077b5;
+}
+
+.social-icons a.github {
+  background-color: #333;
+}
+
+/* Phone Info Section */
+.phone-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem; /* spacing from social icons */
+  font-size: 1.1rem;
+  text-align: center; /* center the phone number */
+}
+
+/* Phone icon styling */
+.phone-info i {
+  font-size: 1.5rem; /* Icon size */
+  color: #C95792; /* Icon color */
+}
+
+/* Phone number styling */
+.phone-number {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Adjust margins to ensure spacing and alignment */
+.contact-box {
+  margin-top: 1.5rem; /* Space above the contact box */
+}
+
+/* Make it responsive */
+@media (max-width: 1024px) {
+  /* Hide Sidebar on mobile */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: none; /* You can add a toggle for this later */
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .left-column,
+  .right-column {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-pic {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .detail {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detail-label,
+  .detail-value {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Reduce padding on small screens */
+  .profile-container,
+  .profile-details,
+  .bio-box {
+      height: 160px; /* or whatever fits your content well */
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+  .contact-box {
+    padding: 3rem;
+  }
+}
