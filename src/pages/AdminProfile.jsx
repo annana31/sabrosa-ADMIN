@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './AdminProfile.css';
+import { Pencil } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 
 function AdminProfile() {
   const [profile, setProfile] = useState({
@@ -19,7 +19,14 @@ function AdminProfile() {
     languages: "English, Filipino"
   });
 
+  const [bio, setBio] = useState(
+    "I am a forward-thinking individual with a passion for technology, education, and meaningful human connection. " +
+    "Grounded in my Filipino roots, I value community and continuous growth. Whether managing academic challenges " +
+    "or collaborating on creative endeavors, I always bring empathy and focus. With a heart set on progress and a mind " +
+    "open to learning, I embrace every opportunity to improve both myself and the world around me."
+  );
   const [isEditing, setIsEditing] = useState(false);
+  const [isBioEditing, setIsBioEditing] = useState(false);
 
   const calculateAge = (birthdate) => {
     const birthDate = new Date(birthdate);
@@ -49,12 +56,11 @@ function AdminProfile() {
         <h3>Admin Panel</h3>
         <ul>
           <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/performance">Performance/Report</Link></li>
+          <li><Link to="/EmployeeDetails">Employee Details</Link></li>
           <li><Link to="/projects">Projects</Link></li>
           <li><Link to="/users">Users</Link></li>
           <li><Link to="/tasks">Tasks</Link></li>
         </ul>
-
       </div>
 
       {/* Main Content Area */}
@@ -161,33 +167,78 @@ function AdminProfile() {
             </button>
           </div>
 
-          {/* Right Column */}
           <div className="right-column">
-            <div className="bio-box">
-              <h3>Profile Bio</h3>
-              <p>I am a forward-thinking individual with a passion for technology, education, and meaningful human connection. 
-                 Grounded in my Filipino roots, I value community and continuous growth. Whether managing academic challenges 
-                 or collaborating on creative endeavors, I always brings empathy and focus. With a heart set on progress and a mind 
-                 open to learning, I embraces every opportunity to improve both myself and the world around me.</p>
-            </div>
-            <div className="contact-box">
-  <h3>Contact Me</h3>
-  <div className="social-icons">
-    <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
-      <i className="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
-      <i className="fab fa-linkedin-in"></i>
-    </a>
-    <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-      <i className="fab fa-instagram"></i>
-    </a>
-    <a href="https://x.com/" target="_blank" rel="noreferrer">
-      <i className="fab fa-twitter"></i>
-    </a>
+          <div className="bio-box">
+  <div className="bio-header" style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "10px" }}>
+    <h3 style={{ fontSize: "1.125rem", fontWeight: "600", margin: 0 }}>Profile Bio</h3>
+    <Pencil
+      size={16}
+      style={{ cursor: "pointer", color: "#555" }}
+      onClick={() => setIsBioEditing(!isBioEditing)}
+      title="Edit Bio"
+    />
   </div>
+
+  {isBioEditing ? (
+    <div>
+      <textarea
+  className="bio-textarea"
+  rows={5}
+  value={bio}
+  onChange={(e) => setBio(e.target.value)}
+  style={{
+    height: "100px", // fixed height
+    width: "100%",
+    resize: "none", // optional
+    overflowY: "auto",
+    padding: "8px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    fontSize: "14px",
+    fontFamily: "inherit",
+    boxSizing: "border-box"
+  }}
+/>
+
+      <button
+        onClick={() => setIsBioEditing(false)}
+        style={{
+          backgroundColor: "#3B82F6",
+          color: "white",
+          padding: "6px 14px",
+          borderRadius: "5px",
+          border: "none",
+          cursor: "pointer",
+          fontSize: "14px",
+        }}
+      >
+        Save
+      </button>
+    </div>
+  ) : (
+    <p style={{ fontSize: "14px", lineHeight: "1.6", color: "#333" }}>{bio}</p>
+  )}
 </div>
+
+            <div className="contact-box">
+              <h3>Contact Me</h3>
+              <div className="social-icons">
+                <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
+                  <i className="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+                  <i className="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+                  <i className="fab fa-instagram"></i>
+                </a>
+                <a href="https://x.com/" target="_blank" rel="noreferrer">
+                  <i className="fab fa-twitter"></i>
+                </a>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
     </div>
