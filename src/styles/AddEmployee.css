@@ -1,109 +1,83 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #EFEEEA;
-  color: black;
-  height: 100vh;  /* Full viewport height */
-  display: flex;  /* Enables Flexbox for centering */
-  justify-content: center;  /* Centers horizontally */
-  align-items: center;  /* Centers vertically */
-}
-
-.add-employee-container {
-  width: 100%;
-  max-width: 1000px;  /* Limit the width of the container */
-  padding: 30px;
-  background-color: #FFDBDB;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-}
-
-.add-employee-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  color: black;
-}
-
-.left-panel,
-.right-panel {
-  flex: 1 1 48%;
+.add-employee {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background-color: #FFDFEF;
+  color: #003092;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
+}
+
+.add-employee h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  background-color: #FFC6C6;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  margin-top: 0.7in; 
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.input-group input,
+.input-group select {
   padding: 10px;
-  background-color: #fafafa;
-  border-radius: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #000000;
 }
 
-input,
-select,
-textarea {
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: white;
-  color: black;
-}
-
-textarea {
-  resize: vertical;
-  min-height: 60px;
-}
-
-.photo-upload {
+.profile-image {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  margin-bottom: 15px;
 }
 
-.avatar-placeholder,
-.avatar-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: #ddd;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  overflow: hidden;
+.profile-image img {
+  width: 120px;
+  height: 120px;
   object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #eee;
 }
 
-h2 {
-  margin-bottom: 20px;
-  text-align: center;
-  color: #333;
+.profile-image .placeholder {
+  font-size: 60px;
+  color: #777;
 }
 
-h3 {
-  margin: 0 0 10px 0;
-  color: #444;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
-}
-
-.save-btn {
-  background-color: #a63d75;
+.create-button {
+  grid-column: 1 / -1;
+  padding: 12px;
+  background-color: #FF90BB;
   color: white;
-  padding: 10px 20px;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  align-self: flex-start;
-  margin-top: 20px;
+  transition: background-color 0.3s;
 }
 
-.save-btn:hover {
-  background-color: #922d63;
-}
-
-input[type="file"] {
-  border: none;
-  background: none;
+.create-button:hover {
+  background-color: #c4678b;
 }
