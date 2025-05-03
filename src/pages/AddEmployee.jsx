@@ -4,27 +4,31 @@ import '../styles/AddEmployee.css';
 function AddEmployee() {
   const [formData, setFormData] = useState({});
   const [imagePreview, setImagePreview] = useState(null);
-  const [age, setAge] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  // Function to calculate age from birthdate
+  const calculateAge = (birthday) => {
+    const birthDate = new Date(birthday);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const month = today.getMonth();
+    const day = today.getDate();
 
-    if (name === 'birthday') {
-      const birthDate = new Date(value);
-      const today = new Date();
-      const calculatedAge = today.getFullYear() - birthDate.getFullYear();
-      const m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        setAge(calculatedAge - 1);
-      } else {
-        setAge(calculatedAge);
-      }
+    if (month < birthDate.getMonth() || (month === birthDate.getMonth() && day < birthDate.getDate())) {
+      age--;
     }
 
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value,
-    });
+    return age;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    // If the birthday field is updated, calculate age automatically
+    if (name === 'birthday') {
+      const age = calculateAge(value);
+      setFormData({ ...formData, age }); // Update the age field
+    }
   };
 
   const handleImageUpload = (e) => {
@@ -42,61 +46,100 @@ function AddEmployee() {
   };
 
   return (
-    <div className="add-employee-container">
-      <h2>Create Staff</h2>
-      <form className="add-employee-form" onSubmit={handleSubmit}>
-        <div className="left-panel">
-          <div className="photo-upload">
-            {imagePreview ? (
-              <img src={imagePreview} alt="Preview" className="avatar-img" />
-            ) : (
-              <div className="avatar-placeholder">👤</div>
-            )}
-            <input type="file" accept="image/*" onChange={handleImageUpload} />
-          </div>
+    <div className="add-employee">
+      <h2>Add Employee</h2>
+      <form onSubmit={handleSubmit} className="form-grid">
+        <div className="profile-image">
+          {imagePreview ? (
+            <img src={imagePreview} alt="Preview" />
+          ) : (
+            <div className="placeholder">👤</div>
+          )}
+          <label htmlFor="uploadPhoto">Upload Photo</label>
+          <input type="file" id="uploadPhoto" name="profileImage" onChange={handleImageUpload} />
+        </div>
 
-          <input name="firstName" placeholder="* First Name" required onChange={handleChange} />
-          <input name="lastName" placeholder="* Last Name" required onChange={handleChange} />
-          <input name="phone" placeholder="* Phone Number" required onChange={handleChange} />
-          <input name="email" type="email" placeholder="* Email Address" required onChange={handleChange} />
-          <input name="designation" placeholder="* Designation" required onChange={handleChange} />
-          <input name="address" placeholder="* Address" required onChange={handleChange} />
+        <div className="input-group">
+          <label htmlFor="firstName">First Name:</label>
+          <input type="text" id="firstName" name="firstName" required onChange={handleChange} />
+        </div>
 
-          <select name="city" required onChange={handleChange}>
-            <option value="">* Select City</option>
-            <option value="Cagayan de Oro">Cagayan de Oro</option>
-            <option value="Manila">Manila</option>
-          </select>
+        <div className="input-group">
+          <label htmlFor="middleName">Middle Name:</label>
+          <input type="text" id="middleName" name="middleName" onChange={handleChange} />
+        </div>
 
-          <select name="state" required onChange={handleChange}>
-            <option value="">* Select State</option>
-            <option value="Misamis Oriental">Misamis Oriental</option>
-            <option value="NCR">NCR</option>
+        <div className="input-group">
+          <label htmlFor="lastName">Last Name:</label>
+          <input type="text" id="lastName" name="lastName" required onChange={handleChange} />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="email">Email Address:</label>
+          <input type="email" id="email" name="email" required onChange={handleChange} />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" required onChange={handleChange} placeholder="(XXX) XXX-XXXX" />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="jobPosition">Job Position:</label>
+          <input type="text" id="jobPosition" name="jobPosition" required onChange={handleChange} />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="address">Address:</label>
+          <input type="text" id="address" name="address" onChange={handleChange} />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="birthday">Birthday:</label>
+          <input type="date" id="birthday" name="birthday" onChange={handleChange} />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="age">Age:</label>
+          <input type="number" id="age" name="age" value={formData.age || ''} readOnly />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="employeeId">Employee ID:</label>
+          <input type="text" id="employeeId" name="employeeId" onChange={handleChange} />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="employeeType">Employee Type:</label>
+          <select id="employeeType" name="employeeType" onChange={handleChange}>
+            <option value="">- Select -</option>
+            <option value="Employee">Employee</option>
+            <option value="Contractor">Contractor</option>
+            <option value="Intern">Intern</option>
           </select>
         </div>
 
-        <div className="right-panel">
-          <div>
-            <h3>Additional Info</h3>
-            <input
-              type="date"
-              name="birthday"
-              placeholder="* Birthday"
-              required
-              onChange={handleChange}
-            />
-            {age && <input type="text" value={`Age: ${age}`} readOnly />}
-            <input name="role" placeholder="* Employee Role" required onChange={handleChange} />
-
-            <select name="jobType" required onChange={handleChange}>
-              <option value="">* Select Job Type</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-            </select>
-          </div>
-
-          <button type="submit" className="save-btn">Save</button>
+        <div className="input-group">
+          <label htmlFor="employeeStatus">Employee Status:</label>
+          <select id="employeeStatus" name="employeeStatus" onChange={handleChange}>
+            <option value="">- Select -</option>
+            <option value="Full-Time">Full-Time</option>
+            <option value="Part-Time">Part-Time</option>
+            <option value="Contract">Contract</option>
+          </select>
         </div>
+
+        <div className="input-group">
+          <label htmlFor="dateOfHire">Date of Hire:</label>
+          <input type="date" id="dateOfHire" name="dateOfHire" onChange={handleChange} />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="employeeEndDate">End Date (if any):</label>
+          <input type="date" id="employeeEndDate" name="employeeEndDate" onChange={handleChange} />
+        </div>
+
+        <button type="submit" className="create-button">Create Employee</button>
       </form>
     </div>
   );
