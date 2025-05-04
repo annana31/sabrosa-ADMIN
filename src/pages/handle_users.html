@@ -17,56 +17,112 @@
 <body class="bg-pink-100 font-sans">
   <div class="flex h-screen">
 
+    <!-- Sidebar -->
     <aside class="w-64 bg-pink-200 p-4 text-gray-800 min-h-screen">
       <nav class="space-y-2">
         <a href="dashboard.html" class="block px-2 py-1 rounded hover:bg-pink-300">Dashboard</a>
-
-        <!-- Products Menu -->
         <div>
-          <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">
-            Products
-          </button>
+          <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">Products</button>
           <div class="submenu ml-4 mt-2 space-y-1 hidden">
             <a href="#" class="block text-sm hover:text-blue-600">Add Products</a>
             <a href="#" class="block text-sm hover:text-blue-600">Edit Products</a>
           </div>
         </div>
-
-        <!-- Employee Menu -->
         <div>
-          <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">
-            Employee
-          </button>
+          <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">Employee</button>
           <div class="submenu ml-4 mt-2 space-y-1 hidden">
             <a href="#" class="block text-sm hover:text-blue-600">Employee Details</a>
             <a href="#" class="block text-sm hover:text-blue-600">Add Employee</a>
           </div>
         </div>
-
         <a href="handle_users.html" class="block px-2 py-1 rounded hover:bg-pink-300">Users</a>
         <a href="handle_orders.html" class="block px-2 py-1 rounded hover:bg-pink-300">Orders</a>
       </nav>
     </aside> 
 
+    <!-- Main content -->
     <main class="flex-1 p-6 overflow-y-auto">
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold">Users</h1>
-        <button class="text-sm bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <button id="openModalBtn" class="text-sm bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
           + Add New User
         </button>
       </div>
 
+      <!-- User Cards -->
       <div id="userList" class="space-y-4"></div>
     </main>
   </div>
 
-  <!-- Toggle script -->
+  <!-- Modal -->
+  <div id="userModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-6 rounded-lg shadow-xl w-full max-w-md relative">
+      <button id="closeModalBtn" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
+      <h2 class="text-xl font-semibold mb-4">Add New User</h2>
+      <form id="userForm" class="space-y-4">
+        <div>
+          <label class="block font-medium mb-1">Name</label>
+          <input type="text" id="name" required class="w-full border px-3 py-2 rounded" />
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Email</label>
+          <input type="email" id="email" required class="w-full border px-3 py-2 rounded" />
+        </div>
+        <div>
+          <label class="block font-medium mb-1">Password</label>
+          <input type="password" id="password" required class="w-full border px-3 py-2 rounded" />
+        </div>
+        <div class="flex justify-end">
+          <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
   <script>
+    // Sidebar collapsible
     document.querySelectorAll('.collapsible').forEach(button => {
       button.addEventListener('click', () => {
-        const submenu = button.nextElementSibling;
-        submenu.classList.toggle('show');
+        button.nextElementSibling.classList.toggle('show');
       });
+    });
+
+    // Modal toggle logic
+    const modal = document.getElementById('userModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    openModalBtn.addEventListener('click', () => {
+      modal.classList.remove('hidden');
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    // Form submission logic
+    document.getElementById('userForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (name && email && password) {
+        const userCard = document.createElement('div');
+        userCard.className = 'p-4 bg-white rounded shadow';
+        userCard.innerHTML = `
+          <h2 class="text-lg font-semibold">${name}</h2>
+          <p><strong>Email:</strong> ${email}</p>
+        `;
+
+        document.getElementById('userList').appendChild(userCard);
+
+        // Reset form and hide modal
+        this.reset();
+        modal.classList.add('hidden');
+      }
     });
   </script>
 </body>
