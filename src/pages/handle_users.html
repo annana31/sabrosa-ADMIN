@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Staff Users</title>
+  <title>Users</title>
   <script type="module" src="handle_users_script.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
@@ -18,41 +18,41 @@
   <div class="flex h-screen">
 
     <aside class="w-64 bg-pink-200 p-4 text-gray-800 min-h-screen">
-        <nav class="space-y-2">
-          <a href="dashboard.html" class="block px-2 py-1 rounded hover:bg-pink-300">Dashboard</a>
-      
-          <!-- Products Menu -->
-          <div>
-            <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">
-              Products
-            </button>
-            <div class="submenu ml-4 mt-2 space-y-1 hidden">
-              <a href="#" class="block text-sm hover:text-blue-600">Add Products</a>
-              <a href="#" class="block text-sm hover:text-blue-600">Edit Products</a>
-            </div>
+      <nav class="space-y-2">
+        <a href="dashboard.html" class="block px-2 py-1 rounded hover:bg-pink-300">Dashboard</a>
+
+        <!-- Products Menu -->
+        <div>
+          <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">
+            Products
+          </button>
+          <div class="submenu ml-4 mt-2 space-y-1 hidden">
+            <a href="#" class="block text-sm hover:text-blue-600">Add Products</a>
+            <a href="#" class="block text-sm hover:text-blue-600">Edit Products</a>
           </div>
-      
-          <!-- Employee Menu -->
-          <div>
-            <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">
-              Employee
-            </button>
-            <div class="submenu ml-4 mt-2 space-y-1 hidden">
-              <a href="#" class="block text-sm hover:text-blue-600">Employee Details</a>
-              <a href="#" class="block text-sm hover:text-blue-600">Add Employee</a>
-            </div>
+        </div>
+
+        <!-- Employee Menu -->
+        <div>
+          <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">
+            Employee
+          </button>
+          <div class="submenu ml-4 mt-2 space-y-1 hidden">
+            <a href="#" class="block text-sm hover:text-blue-600">Employee Details</a>
+            <a href="#" class="block text-sm hover:text-blue-600">Add Employee</a>
           </div>
-      
-          <a href="handle_users.html" class="block px-2 py-1 rounded hover:bg-pink-300">Users</a>
-          <a href="handle_orders.html" class="block px-2 py-1 rounded hover:bg-pink-300">Orders</a>
-        </nav>
-      </aside> 
-      
+        </div>
+
+        <a href="handle_users.html" class="block px-2 py-1 rounded hover:bg-pink-300">Users</a>
+        <a href="handle_orders.html" class="block px-2 py-1 rounded hover:bg-pink-300">Orders</a>
+      </nav>
+    </aside> 
+
     <main class="flex-1 p-6 overflow-y-auto">
       <div class="flex justify-between items-center mb-6">
-        <h1 class="text-2xl font-bold">Staffs</h1>
+        <h1 class="text-2xl font-bold">Users</h1>
         <button class="text-sm bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          + Add New Staff User
+          + Add New User
         </button>
       </div>
 
