@@ -9,30 +9,36 @@
   <body>
     <div class="app"> 
       <aside class="sidebar">
-        <nav>
-          <a href="dashboard.html" class="block">Dashboard</a>
-            <div class="menu-group">
-              <button class="collapsible">Products</button>
-              <div class="submenu">
-                <a href="#">Add Products</a>
-                <a href="#">Edit Products</a>
+          <nav class="space-y-2">
+            <a href="dashboard.html" class="block px-2 py-1 rounded hover:bg-pink-300">Dashboard</a>
+        
+            <!-- Products Menu -->
+            <div>
+              <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">
+                Products
+              </button>
+              <div class="submenu ml-4 mt-2 space-y-1 hidden">
+                <a href="#" class="block text-sm hover:text-blue-600">Add Products</a>
+                <a href="#" class="block text-sm hover:text-blue-600">Edit Products</a>
               </div>
             </div>
-          
-            <div class="menu-group">
-              <button class="collapsible">Employee</button>
-              <div class="submenu">
-                <a href="#">Employee Details</a>
-                <a href="#">Add Employee</a>
+        
+            <!-- Employee Menu -->
+            <div>
+              <button class="collapsible w-full text-left px-2 py-1 rounded hover:bg-pink-300 font-medium">
+                Employee
+              </button>
+              <div class="submenu ml-4 mt-2 space-y-1 hidden">
+                <a href="#" class="block text-sm hover:text-blue-600">Employee Details</a>
+                <a href="#" class="block text-sm hover:text-blue-600">Add Employee</a>
               </div>
             </div>
-          
-            <a href="#">Users</a>
-            <a href="handle_orders.html" class="block">Orders</a>
+        
+            <a href="handle_users.html" class="block px-2 py-1 rounded hover:bg-pink-300">Users</a>
+            <a href="handle_orders.html" class="block px-2 py-1 rounded hover:bg-pink-300">Orders</a>
           </nav>
-          
-          
-      </aside>
+        </aside>
+        
       <main class="dashboard">
         <header>
           <input type="search" placeholder="Search for anything..." />
